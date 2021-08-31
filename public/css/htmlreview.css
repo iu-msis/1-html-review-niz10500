@@ -1,0 +1,67 @@
+        header{
+            margin-bottom: 0px;
+            font-family: sans-serif;
+            }
+        
+        
+        .heading{
+             padding-top: 110px;
+    
+            }
+
+        footer{
+             background-color: black;
+             color: white;
+             text-align: center;
+            font-family: sans-serif;
+            padding-top: 5px;
+            padding-bottom: 5px;  
+        }
+
+        nav{
+            background-color: crimson;
+            padding-top: 15px;
+            padding-bottom: 15px;  
+        }
+
+
+        
+        table, td, th {
+            border-bottom: 1px solid rgb(0, 0, 0);
+        }
+        
+        table {
+            border-collapse: collapse;
+        }
+        
+        /* SIZING */
+    
+        th {
+            height: 40px;
+        }
+
+        table {
+            width: 75%;
+        }
+        
+        /* ALIGNMENT & SPACING */
+        
+        td, th {
+            padding: 4px;
+        }     
+
+        td {
+            vertical-align: top;
+        }
+
+        #Add{
+            padding: 5px 10px 5px 10px;
+            float: right;
+        }
+
+        #thumbnail {
+            border: 1px solid white; 
+            border-radius: 4px; 
+            padding: 5px; 
+            width: 150px; 
+          }
