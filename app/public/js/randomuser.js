@@ -4,6 +4,15 @@ const User = {
         "person":{},
       }
     },
+
+    computed:{
+      prettyBirthday(){
+        return dayjs(this.person.dob.date)
+        .format('MMM-DD-YYYY');
+      }
+      
+    },
+
     created(){
 
       fetch('https://randomuser.me/api/')   
