@@ -16,7 +16,9 @@
 <body>    
   <header class="row">
     <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2">
+      <a id="thumbnail" target="_blank" href="img/iulogo.png">
         <img src="img/iulogo.png" width="180px">
+      </a>
     </div>
     <div class="col-xs-7 col-sm-9 col-md-9 col-lg-6">
         <h1 class="heading text-danger">MSIS CORE</h1>
@@ -35,8 +37,10 @@
       
       
       <div id="userApp" class="col col-8">
-
-        <img v-bind:src= "person.picture.large"  width="300" height="350"/>
+        <a id="thumbnail" target="_blank" v-bind:href="person.picture.thumbnail">
+          <img v-bind:src= "person.picture.large"  width="300" height="350"/>
+        </a>
+        
         <table class="table">
 
             <thead>
@@ -71,7 +75,7 @@
     <script src="js/randomuser.js"></script>
 
     <footer>
-        <a href="https://github.com/" class="text-info">Gitbub</a> <br>  
+        <a href="https://github.com/" class="text-info">Gitbub</a>  
         
         <a id="thumbnail" target="_blank" href="img/fakeperson.jpg">
           <img src="img/fakeperson.jpg" width="20" height="22" alt="fakeperson">
