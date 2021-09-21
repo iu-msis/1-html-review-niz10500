@@ -66,6 +66,11 @@
           </tfoot>
 
         </table>
+
+        <form v-on:submit.prevent="fetchUserData">
+          <button type="submit">Reload</button>
+        </form>
+        
       </div>
     </main>
 
