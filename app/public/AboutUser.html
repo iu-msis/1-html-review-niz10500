@@ -1,22 +1,24 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Home Page</title>
+    <head>
+    <!-- Required meta tags -->   
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <!-- CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/htmlreview.css">
 
-    <link rel="stylesheet" href="css/htmlreview.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://unpkg.com/vue@next"></script>
-</head>
-    
-<body>    
+        <title>Profile</title>
+        
+        <script src="https://unpkg.com/vue@next"></script>
+        </head>
+
+<body> 
   <header class="row">
     <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2">
-      <a id="thumbnail" target="_blank" href="img/iulogo.png">
+      <a target="_blank" href="img/iulogo.png">
         <img src="img/iulogo.png" width="180px">
       </a>
     </div>
@@ -29,63 +31,54 @@
     <nav>
       <a href="index.html">Home</a> | <a href="AboutUser.html">About User</a> | <a href="Books.html" >Books Information</a>
     </nav>
-
+ 
     <main>
 
-        <div class="p-3 mb-2 bg-success text-white"><h1>User Information</h1></div>
+    <div id="offerApp">
+        <div v-if="person">
+          <a target="_blank" v-bind:href="person.picture.thumbnail"><img v-bind:src="person.picture.large" alt = "Picture of Judith Wright" class="rounded-circle" height="200" width="200"></a>
+   
+          <table class="table">
 
-      
-      
-      <div id="userApp" class="col col-8">
-        <a id="thumbnail" target="_blank" v-bind:href="person.picture.thumbnail">
-          <img v-bind:src= "person.picture.large"  width="300" height="350"/>
-        </a>
-        
-        <table class="table">
-
-            <thead>
-                <tr>
-                    <th>User Name</th>
-                    <th>Country</th>
-                    <th>Birthday</th>
-                    <th>Age</th>
-                    <th>Email Address</th>
-                </tr>
-            </thead>
+              <thead>
+                  <tr>
+                      <th>User Name</th>
+                      <th>Country</th>
+                      <th>Birthday</th>
+                      <th>Age</th>
+                      <th>Email Address</th>
+                  </tr>
+              </thead>
           
-              <tbody>
-                <tr>
-                  <td>{{person.name.first}} {{person.name.last}}</td>
-                  <td>{{person.location.country}}</td>
-                  <td>{{prettyBirthday}}</td>
-                  <td>{{person.dob.age}}</td>
-                  <td><a v-bind:href="'mailto:'+person.email">{{person.email}}</a></td>
-                </tr>
-              </tbody>
-          <tfoot>
-          </tfoot>
-
-        </table>
+                <tbody>
+                  <tr>
+                    <td>{{person.name.first}} {{person.name.last}}</td>
+                    <td>{{person.location.country}}</td>
+                    <td>{{prettyBirthday}}</td>
+                    <td>{{person.dob.age}}</td>
+                    <td><a v-bind:href="'mailto:'+person.email">{{person.email}}</a></td>
+                  </tr>
+                </tbody>
+          
+          </table>
 
         <form v-on:submit.prevent="fetchUserData">
           <button type="submit">Reload</button>
         </form>
-        
-      </div>
-    </main>
+        </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     
-    <script src="js/randomuser.js"></script>
-
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+ 
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+        </main>
+    
     <footer>
-        <a href="https://github.com/" class="text-info">Gitbub</a>  
-        
-        <a id="thumbnail" target="_blank" href="img/fakeperson.jpg">
-          <img src="img/fakeperson.jpg" width="20" height="22" alt="fakeperson">
-        </a>
-        <p>citation: https://randomuser.me/</p>
+      <a href="https://github.com/" class="text-info">Gitbub</a>       
+      <p>citation: https://randomuser.me/</p>
     </footer>
-</body>    
+</body>
 </html>
