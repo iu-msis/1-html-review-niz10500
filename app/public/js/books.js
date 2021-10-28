@@ -34,7 +34,59 @@ const Books = {
             })
         },
 
+        postBook(evt){
+            if (this.selectedBook){
+                this.PostEditBook(evt);
+            } else{
+                this.postNewBook(evt);
+            }
+        },
 
+        PostEditBook(evt){
+            this.bookForm.id = this.selectedBook.id;        
+          console.log("Editing:", this.bookForm);
+          alert("Editing!");
+  
+          fetch('api/book/update.php', {
+              method:'POST',
+              body: JSON.stringify(this.bookForm),
+              headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              }
+            })
+            .then( response => response.json() )
+            .then( json => {
+              console.log("Returned from post:", json);
+              // TODO: test a result was returned!
+              this.books = json;
+              
+              // reset the form  （clean the form)
+              this.handleResetEdit;
+            });
+        },
+        postDeleteBook(o) {
+            if (!confirm("Are you sure you want to delete the offer from "+o.Title+"?")) {
+                return;
+            }
+            
+            fetch('api/book/delete.php', {
+                method:'POST',
+                body: JSON.stringify(o),
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8"
+                }
+              })
+              .then( response => response.json() )
+              .then( json => {
+                console.log("Returned from post:", json);
+                // TODO: test a result was returned!
+                this.books = json;
+                
+                // reset the form  （clean the form)
+                this.bookForm = {};
+              });
+          
+          },
     postNewBook(evt) {     
         console.log("Posting:", this.bookForm);
         alert("Posting!");
@@ -55,8 +107,20 @@ const Books = {
             // reset the form  （clean the form)
             this.bookForm = {};
           });
+      },
+
+      handleEditBook(book){
+        this.selectedBook = book;
+        this.bookForm = Object.assign({}, this.selectedBook);
+      },
+      handleResetEdit(){
+        this.selectedBook = null;
+        this.bookForm = {};
       }
+
   },
+
+
    
   created() {
     return this.fetchBookData();
